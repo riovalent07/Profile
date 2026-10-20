@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rio.data - Data Analyst Portfolio</title>
+    
+    <!-- Google Fonts: Inter untuk teks utama, Fira Code untuk nuansa geeky/kode -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace'],
+                    },
+                    colors: {
+                        slate: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            200: '#e2e8f0',
+                            500: '#64748b',
+                            600: '#475569',
+                            800: '#1e293b',
+                            900: '#0f172a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Base typography setting */
+        body { font-family: 'Inter', sans-serif; }
+        
+        /* Smooth micro-interactions */
+        .glass-nav-active {
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Scrollbar kustom yang elegan */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f8fafc; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+        /* Highlight warna kode untuk IDE modal */
+        .syntax-keyword { color: #c678dd; }
+        .syntax-function { color: #61afef; }
+        .syntax-string { color: #98c379; }
+        .syntax-number { color: #d19a66; }
+        .syntax-comment { color: #5c6370; font-style: italic; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 antialiased selection:bg-blue-200 selection:text-blue-900">
+
+    <!-- Header & Navigasi Semantik -->
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-40 transition-all duration-300 bg-transparent py-4">
+        <nav class="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between">
+            <a href="#hero" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center text-white shadow-md group-hover:bg-blue-600 transition-colors duration-300">
+                    <i class="fa-solid fa-layer-group text-sm"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-bold text-lg tracking-tight text-slate-900">Rio.data</span>
+                </div>
+            </a>
+
+            <!-- Navigasi Desktop -->
+            <div class="hidden md:flex items-center gap-8 font-medium text-sm text-slate-600">
+                <a href="#about" class="hover:text-blue-600 transition-colors duration-300">About</a>
+                <a href="#skills" class="hover:text-blue-600 transition-colors duration-300">Skills</a>
+                <a href="#projects" class="hover:text-blue-600 transition-colors duration-300">Projects</a>
+                <a href="#experience" class="hover:text-blue-600 transition-colors duration-300">Experience</a>
+            </div>
+
+            <div class="hidden md:block">
+                <a href="#contact" class="px-5 py-2.5 rounded-xl bg-blue-600 text-white font-medium text-sm shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
+                    Let's Connect
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Section 1: Hero -->
+        <section id="hero" class="relative pt-36 pb-24 lg:pt-48 lg:pb-32 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-6 lg:px-12">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                    
+                    <div class="lg:col-span-7 space-y-8 scroll-reveal">
+                        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 border border-slate-200 text-slate-600 text-xs font-mono font-medium tracking-wide">
+                            <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
+                            CURRENTLY LEARNING SQL & DATA ANALYTICS
+                        </div>
+                        
+                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-slate-900 leading-[1.15]">
+                            Transforming Complex Data into <br class="hidden md:block">
+                            <span class="text-blue-600">Clear Actionable Insights.</span>
+                        </h1>
+                        
+                        <p class="text-slate-600 text-lg md:text-xl font-light leading-relaxed max-w-2xl">
+                            Hi, I'm <span class="font-medium text-slate-900">Rio Muhammad Valentino</span>. An aspiring Data Analyst and student at UPN 'Veteran' Yogyakarta, currently practicing my skills and building hands-on experience in SQL querying and data analytics projects.
+                        </p>
+
+                        <div class="flex flex-col sm:flex-row items-start gap-4 pt-4">
+                            <a href="#projects" class="px-8 py-3.5 rounded-xl bg-slate-900 text-white font-medium shadow-lg shadow-slate-900/20 hover:shadow-xl hover:bg-blue-600 hover:-translate-y-1 transition-all duration-300 flex items-center gap-3">
+                                Explore Projects
+                                <i class="fa-solid fa-arrow-right text-sm"></i>
+                            </a>
+                            <a href="./CV_Rio_Muhammad_Valentino.pdf" download="CV_Rio_Muhammad_Valentino.pdf" class="px-8 py-3.5 rounded-xl bg-white border border-slate-200 text-slate-700 font-medium shadow-sm hover:shadow-md hover:-translate-y-1 hover:border-slate-300 transition-all duration-300 flex items-center gap-3">
+                                <i class="fa-solid fa-download text-slate-400"></i>
+                                Download CV
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-5 scroll-reveal" style="transition-delay: 150ms;">
+                        <figure class="rounded-2xl bg-slate-900 p-6 shadow-2xl border border-slate-800 transform rotate-1 hover:rotate-0 transition-transform duration-500">
+                            <div class="flex items-center justify-between mb-6 pb-4 border-b border-slate-700">
+                                <div class="flex gap-2">
+                                    <div class="w-3 h-3 rounded-full bg-slate-600 hover:bg-red-400 transition-colors"></div>
+                                    <div class="w-3 h-3 rounded-full bg-slate-600 hover:bg-amber-400 transition-colors"></div>
+                                    <div class="w-3 h-3 rounded-full bg-slate-600 hover:bg-emerald-400 transition-colors"></div>
+                                </div>
+                                <span class="text-xs font-mono text-slate-400">data_cleaning.sql</span>
+                            </div>
+                            
+                            <pre class="font-mono text-sm leading-loose text-slate-300 overflow-x-auto"><code><span class="syntax-keyword">SELECT</span> shipment_id, 
+       <span class="syntax-function">INITCAP</span>(<span class="syntax-function">TRIM</span>(origin_warehouse)) <span class="syntax-keyword">AS</span> origin_warehouse, 
+       <span class="syntax-function">COALESCE</span>(<span class="syntax-function">INITCAP</span>(<span class="syntax-function">TRIM</span>(destination_city)), <span class="syntax-string">'unknown'</span>) <span class="syntax-keyword">AS</span> destination_city, 
+       <span class="syntax-keyword">CASE WHEN</span> weight_kg < <span class="syntax-number">0</span> <span class="syntax-keyword">THEN</span> <span class="syntax-function">ABS</span>(weight_kg) 
+            <span class="syntax-keyword">WHEN</span> weight_kg = <span class="syntax-number">0</span> <span class="syntax-keyword">THEN NULL</span> 
+            <span class="syntax-keyword">ELSE</span> weight_kg 
+       <span class="syntax-keyword">END AS</span> weight_kg_clean 
+<span class="syntax-keyword">FROM</span> dirty_shipments;</code></pre>
+
+                            <div class="mt-6 pt-4 border-t border-slate-700 flex items-center justify-between">
+                                <span class="text-xs font-mono text-slate-500">Status: Optimized</span>
+                                <span class="text-xs font-mono text-emerald-400 flex items-center gap-2">
+                                    <i class="fa-solid fa-circle-check"></i> Executed Successfully
+                                </span>
+                            </div>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: About (Dengan Foto) -->
+        <section id="about" class="py-24 bg-white border-y border-slate-200">
+            <div class="max-w-7xl mx-auto px-6 lg:px-12">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                    
+                    <div class="lg:col-span-5 scroll-reveal">
+                        <div class="relative w-full max-w-sm mx-auto lg:ml-0 aspect-[4/5] rounded-3xl bg-slate-50 p-2 border border-slate-200 shadow-xl group overflow-hidden">
+                            <img src="./KOOR_foto formal_Rio Muhammad Valentino_2024.JPG" alt="Rio Muhammad Valentino" class="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-700 ease-out">
+                            <div class="absolute inset-2 rounded-2xl bg-gradient-to-t from-slate-900/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                            <div class="absolute bottom-6 left-6 right-6 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
+                                <span class="inline-block px-3 py-1.5 bg-white/90 backdrop-blur-sm text-slate-900 text-xs font-mono font-semibold rounded-lg shadow-sm border border-white/50">
+                                    Rio Muhammad V.
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-7 space-y-8 scroll-reveal" style="transition-delay: 150ms;">
+                        <div class="space-y-4">
+                            <span class="text-blue-600 font-mono text-xs font-semibold uppercase tracking-widest">Who I Am</span>
+                            <h2 class="text-3xl md:text-4xl font-bold text-slate-900 leading-snug">Driven by Curiosity, Grounded in Data.</h2>
+                            <p class="text-slate-500 text-base md:text-lg leading-relaxed max-w-2xl">
+                                Bridging raw business data with analytical insights through continuous learning and practical projects.
+                            </p>
+                        </div>
+                        
+                        <article class="prose prose-slate max-w-none text-slate-600">
+                            <p class="text-lg leading-relaxed mb-6 font-medium text-slate-800">
+                                Hello! I am Rio Muhammad Valentino, a student at UPN 'Veteran' Yogyakarta with a deep passion for data analytics.
+                            </p>
+                            <p class="leading-relaxed mb-6">
+                                Currently practicing my skills and building hands-on experience in Python programming, SQL querying, data exploration, and analytics projects to grow as a future Data Analyst. My toolkit focuses on core SQL databases, Excel, Python libraries, and Power BI. I believe that every dataset holds a meaningful story waiting to be uncovered through curiosity and consistent practice.
+                            </p>
+                            
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6 border-t border-slate-100">
+                                <div class="flex items-start gap-3 group">
+                                    <div class="w-6 h-6 rounded-md bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                                        <i class="fa-solid fa-check text-xs"></i>
+                                    </div>
+                                    <span class="text-sm font-medium text-slate-700 mt-0.5">SQL Querying & Database</span>
+                                </div>
+                                <div class="flex items-start gap-3 group">
+                                    <div class="w-6 h-6 rounded-md bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                                        <i class="fa-solid fa-check text-xs"></i>
+                                    </div>
+                                    <span class="text-sm font-medium text-slate-700 mt-0.5">Python Data Analysis</span>
+                                </div>
+                                <div class="flex items-start gap-3 group">
+                                    <div class="w-6 h-6 rounded-md bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                                        <i class="fa-solid fa-check text-xs"></i>
+                                    </div>
+                                    <span class="text-sm font-medium text-slate-700 mt-0.5">Data Cleaning & Preparation</span>
+                                </div>
+                                <div class="flex items-start gap-3 group">
+                                    <div class="w-6 h-6 rounded-md bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                                        <i class="fa-solid fa-check text-xs"></i>
+                                    </div>
+                                    <span class="text-sm font-medium text-slate-700 mt-0.5">Analytical Problem Solving</span>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Skills Stack -->
+        <section id="skills" class="py-24 bg-slate-50">
+            <div class="max-w-7xl mx-auto px-6 lg:px-12">
+                <div class="mb-16 scroll-reveal">
+                    <span class="text-blue-600 font-mono text-xs font-semibold uppercase tracking-widest">Technical Arsenal</span>
+                    <h2 class="text-3xl font-bold text-slate-900 mt-3">Skills & Data Stack</h2>
+                    <p class="text-slate-500 mt-2">The languages, databases, and visualization suites I use daily to extract insight.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 scroll-reveal">
+                        <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl mb-6">
+                            <i class="fa-solid fa-code"></i>
+                        </div>
+                        <h3 class="font-bold text-slate-900 mb-2">Programming</h3>
+                        <p class="text-xs text-slate-500 mb-6">Data manipulation & scripting</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-mono rounded-lg">Python</span>
+                        </div>
+                    </div>
+                    <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 scroll-reveal" style="transition-delay: 100ms;">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl mb-6">
+                            <i class="fa-solid fa-database"></i>
+                        </div>
+                        <h3 class="font-bold text-slate-900 mb-2">Databases & SQL</h3>
+                        <p class="text-xs text-slate-500 mb-6">Complex queries & warehousing</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-mono rounded-lg">PostgreSQL</span>
+                            <span class="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-mono rounded-lg">MySQL</span>
+                        </div>
+                    </div>
+                    <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 scroll-reveal" style="transition-delay: 200ms;">
+                        <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-500 flex items-center justify-center text-xl mb-6">
+                            <i class="fa-solid fa-chart-pie"></i>
+                        </div>
+                        <h3 class="font-bold text-slate-900 mb-2">BI & Visualization</h3>
+                        <p class="text-xs text-slate-500 mb-6">Executive dashboards & storytelling</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-mono rounded-lg">Power BI</span>
+                        </div>
+                    </div>
+                    <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 scroll-reveal" style="transition-delay: 300ms;">
+                        <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-xl mb-6">
+                            <i class="fa-solid fa-cubes"></i>
+                        </div>
+                        <h3 class="font-bold text-slate-900 mb-2">Libraries & ML</h3>
+                        <p class="text-xs text-slate-500 mb-6">Statistical modeling & data prep</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-mono rounded-lg">Pandas</span>
+                            <span class="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-mono rounded-lg">NumPy</span>
+                            <span class="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-mono rounded-lg">Scikit-Learn</span>
+                            <span class="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-mono rounded-lg">Seaborn</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Projects -->
+        <section id="projects" class="py-24 bg-white border-t border-slate-200">
+            <div class="max-w-7xl mx-auto px-6 lg:px-12">
+                <div class="mb-16 max-w-2xl scroll-reveal">
+                    <span class="text-blue-600 font-mono text-xs font-semibold uppercase tracking-widest">Portfolio Showcase</span>
+                    <h2 class="text-3xl font-bold text-slate-900 mt-3">Featured Data Projects</h2>
+                    <p class="text-slate-500 mt-2 leading-relaxed">
+                        Explore data analysis projects, Machine Learning models, and SQL scripts. Detail implementation displays practical analytical methodologies.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                    <article class="group bg-slate-50 rounded-3xl border border-slate-200 overflow-hidden hover:shadow-2xl hover:border-slate-300 transition-all duration-300 scroll-reveal">
+                        <div class="p-8">
+                            <div class="flex items-center justify-between mb-6">
+                                <span class="px-3 py-1.5 bg-white border border-slate-200 text-slate-600 text-xs font-mono rounded-lg shadow-sm">Machine Learning & Python</span>
+                                <i class="fa-brands fa-python text-2xl text-slate-300 group-hover:text-blue-600 transition-colors"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors">Analisis Adopsi AI Perusahaan Global</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-8">
+                                Proyek analisis eksploratif (EDA) dan pemodelan regresi linier menggunakan Python (Pandas, Scikit-Learn, Seaborn, dan Matplotlib) untuk memprediksi serta menganalisis tingkat adopsi AI di lingkup korporat.
+                            </p>
+                            
+                            <div class="flex flex-wrap gap-2 mb-8">
+                                <span class="text-xs font-mono text-slate-500 bg-slate-200/50 px-2 py-1 rounded">Python</span>
+                                <span class="text-xs font-mono text-slate-500 bg-slate-200/50 px-2 py-1 rounded">Pandas</span>
+                                <span class="text-xs font-mono text-slate-500 bg-slate-200/50 px-2 py-1 rounded">Scikit-Learn</span>
+                                <span class="text-xs font-mono text-slate-500 bg-slate-200/50 px-2 py-1 rounded">Seaborn</span>
+                            </div>
+                            
+                            <button onclick="openModal('python-ai')" class="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 hover:text-blue-700 transition-colors focus:outline-none">
+                                Explore Query & Logic
+                                <i class="fa-solid fa-arrow-right-long text-xs group-hover:translate-x-1 transition-transform"></i>
+                            </button>
+                        </div>
+                    </article>
+
+                    <article class="group bg-slate-50 rounded-3xl border border-slate-200 overflow-hidden hover:shadow-2xl hover:border-slate-300 transition-all duration-300 scroll-reveal" style="transition-delay: 150ms;">
+                        <div class="p-8">
+                            <div class="flex items-center justify-between mb-6">
+                                <span class="px-3 py-1.5 bg-white border border-slate-200 text-slate-600 text-xs font-mono rounded-lg shadow-sm">SQL Data Cleaning</span>
+                                <i class="fa-solid fa-database text-2xl text-slate-300 group-hover:text-emerald-500 transition-colors"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-emerald-600 transition-colors">Data Cleaning & Transformation Shipment</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-8">
+                                Proyek SQL yang berfokus pada pembersihan data pengiriman (dirty_shipments), mencakup standarisasi teks, penghapusan duplikasi data (CTE & ROW_NUMBER), validasi tanggal, dan penanganan outlier biaya dengan metode IQR.
+                            </p>
+                            
+                            <div class="flex flex-wrap gap-2 mb-8">
+                                <span class="text-xs font-mono text-slate-500 bg-slate-200/50 px-2 py-1 rounded">SQL</span>
+                                <span class="text-xs font-mono text-slate-500 bg-slate-200/50 px-2 py-1 rounded">CTE</span>
+                                <span class="text-xs font-mono text-slate-500 bg-slate-200/50 px-2 py-1 rounded">Data Cleaning</span>
+                                <span class="text-xs font-mono text-slate-500 bg-slate-200/50 px-2 py-1 rounded">IQR Outlier</span>
+                            </div>
+                            
+                            <button onclick="openModal('sql-shipment')" class="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 hover:text-blue-700 transition-colors focus:outline-none">
+                                Explore Query & Logic
+                                <i class="fa-solid fa-arrow-right-long text-xs group-hover:translate-x-1 transition-transform"></i>
+                            </button>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Experience / Academic Track -->
+        <section id="experience" class="py-24 bg-slate-50 border-t border-slate-200">
+            <div class="max-w-7xl mx-auto px-6 lg:px-12">
+                <div class="mb-16 scroll-reveal">
+                    <span class="text-blue-600 font-mono text-xs font-semibold uppercase tracking-widest">Career Track</span>
+                    <h2 class="text-3xl font-bold text-slate-900 mt-3">Academic & Experience</h2>
+                    <p class="text-slate-500 mt-2">An accounting student independently building practical skills in data analytics.</p>
+                </div>
+
+                <div class="relative border-l border-slate-200 ml-4 lg:ml-6 pl-8 lg:pl-12 py-4 scroll-reveal">
+                    <div class="absolute -left-3 top-4 w-6 h-6 rounded-full bg-blue-100 border-4 border-white flex items-center justify-center shadow-sm">
+                        <div class="w-2 h-2 rounded-full bg-blue-600"></div>
+                    </div>
+                    
+                    <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg transition-shadow duration-300">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-900">Mahasiswa S1 Akuntansi</h3>
+                                <p class="text-emerald-600 font-medium text-sm mt-1">UPN 'Veteran' Yogyakarta</p>
+                            </div>
+                            <span class="inline-block px-4 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-xs font-mono text-slate-600">Present</span>
+                        </div>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6 max-w-3xl">
+                            Memadukan pemahaman prinsip-prinsip akuntansi dan keuangan dengan keahlian teknis data analitik. Secara konsisten membangun keterampilan praktis dalam pengolahan data menggunakan SQL, Excel, Python, dan visualisasi Power BI untuk menjembatani dunia keuangan dengan pengambilan keputusan berbasis data.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: Contact (Dengan Ikon Sosial Media) -->
+        <section id="contact" class="py-24 bg-white border-t border-slate-200">
+            <div class="max-w-7xl mx-auto px-6 lg:px-12">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
+                    
+                    <div class="lg:col-span-5 space-y-8 scroll-reveal">
+                        <div>
+                            <span class="text-blue-600 font-mono text-xs font-semibold uppercase tracking-widest">Get In Touch</span>
+                            <h2 class="text-3xl font-bold text-slate-900 mt-3 mb-4">Let's Connect & Collaborate</h2>
+                            <p class="text-slate-500 leading-relaxed">
+                                Whether you have an entry-level opportunity, a collaborative data project, or just want to connect and discuss financial data analytics, my inbox is always open.
+                            </p>
+                        </div>
+                        
+                        <div class="space-y-6 pt-4 border-t border-slate-100">
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-lg bg-slate-100 text-slate-600 flex items-center justify-center">
+                                    <i class="fa-regular fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs font-mono text-slate-400 mb-1">Email</p>
+                                    <p class="text-sm font-medium text-slate-900">riovalen2627@gmail.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-lg bg-slate-100 text-slate-600 flex items-center justify-center">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs font-mono text-slate-400 mb-1">Location</p>
+                                    <p class="text-sm font-medium text-slate-900">Yogyakarta, Indonesia</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Ikon Sosial Media Ditambahkan Di Sini -->
+                            <div class="flex items-center gap-3 pt-2">
+                                <a href="https://github.com/riovalent07" target="_blank" class="w-11 h-11 rounded-xl bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-slate-900 hover:text-white hover:-translate-y-1 transition-all duration-300 shadow-sm" aria-label="GitHub">
+                                    <i class="fa-brands fa-github text-lg"></i>
+                                </a>
+                                <a href="https://www.linkedin.com/in/rio-muhammad?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="w-11 h-11 rounded-xl bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-blue-600 hover:text-white hover:-translate-y-1 transition-all duration-300 shadow-sm" aria-label="LinkedIn">
+                                    <i class="fa-brands fa-linkedin text-lg"></i>
+                                </a>
+                                <a href="mailto:riovalen2627@gmail.com" class="w-11 h-11 rounded-xl bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-rose-500 hover:text-white hover:-translate-y-1 transition-all duration-300 shadow-sm" aria-label="Direct Email">
+                                    <i class="fa-solid fa-paper-plane text-lg"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-7 scroll-reveal" style="transition-delay: 150ms;">
+                        <form action="https://formspree.io/f/mgaoyyqz" method="POST" class="bg-slate-50 p-8 rounded-3xl border border-slate-200 shadow-sm">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+                                <div class="space-y-2">
+                                    <label class="text-xs font-semibold text-slate-700 uppercase tracking-wide">Name</label>
+                                    <input type="text" name="name" placeholder="John Doe" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all" required>
+                                </div>
+                                <div class="space-y-2">
+                                    <label class="text-xs font-semibold text-slate-700 uppercase tracking-wide">Email</label>
+                                    <input type="email" name="email" placeholder="john@example.com" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all" required>
+                                </div>
+                            </div>
+                            
+                            <div class="space-y-2 mb-6">
+                                <label class="text-xs font-semibold text-slate-700 uppercase tracking-wide">Subject</label>
+                                <input type="text" name="subject" placeholder="Data Project / Opportunity" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all" required>
+                            </div>
+                            
+                            <div class="space-y-2 mb-8">
+                                <label class="text-xs font-semibold text-slate-700 uppercase tracking-wide">Message</label>
+                                <textarea name="message" rows="4" placeholder="How can we collaborate?" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all resize-none" required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="w-full py-4 rounded-xl bg-slate-900 text-white font-medium text-sm shadow-md hover:bg-blue-600 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2">
+                                Send Message
+                                <i class="fa-regular fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Semantik -->
+    <footer class="py-8 bg-slate-900 text-slate-400 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-4">
+            <p class="text-xs font-mono"></p>
+            <p class="text-xs font-mono"></p>
+        </div>
+    </footer>
+
+    <!-- ========================================== -->
+    <!-- MODAL CODE PREVIEW -->
+    <!-- ========================================== -->
+    <div id="code-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-900/40 backdrop-blur-sm p-4 transition-opacity duration-300 opacity-0">
+        <div class="bg-white rounded-2xl max-w-3xl w-full max-h-[85vh] flex flex-col shadow-2xl border border-slate-200 overflow-hidden transform scale-95 transition-transform duration-300" id="modal-content">
+            
+            <div class="px-6 py-4 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="flex gap-1.5">
+                        <div class="w-3 h-3 rounded-full bg-red-400"></div>
+                        <div class="w-3 h-3 rounded-full bg-amber-400"></div>
+                        <div class="w-3 h-3 rounded-full bg-emerald-400"></div>
+                    </div>
+                    <span id="modal-title" class="text-xs font-mono text-slate-600 font-semibold ml-2">script.py</span>
+                </div>
+                <button onclick="closeModal()" class="text-slate-400 hover:text-slate-700 transition-colors">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <div class="p-6 overflow-y-auto bg-slate-900 flex-1">
+                <pre class="font-mono text-xs sm:text-sm text-slate-300 leading-relaxed"><code id="modal-code-content">Loading script...</code></pre>
+            </div>
+
+            <div class="px-6 py-4 bg-slate-50 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <span class="text-xs text-slate-500 font-mono">Production Ready Pipeline Snippet</span>
+                <div class="flex items-center gap-3 w-full sm:w-auto">
+                    <button onclick="copyModalCode()" class="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 font-medium text-xs flex items-center justify-center gap-2 transition-all shadow-sm">
+                        <i class="fa-regular fa-copy text-blue-600"></i>
+                        <span>Copy Code</span>
+                    </button>
+                    <button onclick="closeModal()" class="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-slate-900 text-white font-medium text-xs hover:bg-blue-600 transition-all shadow-md">
+                        Close Modal
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript untuk Interaksi Halus, Animasi, dan Logika Modal -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            const revealElements = document.querySelectorAll('.scroll-reveal');
+            
+            revealElements.forEach(el => {
+                el.classList.add('opacity-0', 'translate-y-8', 'transition-all', 'duration-700', 'ease-out');
+            });
+
+            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.remove('opacity-0', 'translate-y-8');
+                        entry.target.classList.add('opacity-100', 'translate-y-0');
+                        observer.unobserve(entry.target); 
+                    }
+                });
+            }, observerOptions);
+
+            revealElements.forEach(el => observer.observe(el));
+
+            const header = document.getElementById('main-header');
+            
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 20) {
+                    header.classList.add('glass-nav-active');
+                    header.classList.remove('py-4');
+                    header.classList.add('py-3');
+                } else {
+                    header.classList.remove('glass-nav-active');
+                    header.classList.remove('py-3');
+                    header.classList.add('py-4');
+                }
+            });
+        });
+
+        const codeSnippets = {
+            'python-ai': {
+                title: 'UAS_Rio_Muhammad_Valentino.ipynb (Python)',
+                code: `<span class="syntax-keyword">import</span> numpy <span class="syntax-keyword">as</span> np
+<span class="syntax-keyword">import</span> matplotlib.pyplot <span class="syntax-keyword">as</span> plt
+<span class="syntax-keyword">import</span> pandas <span class="syntax-keyword">as</span> pd
+<span class="syntax-keyword">import</span> seaborn <span class="syntax-keyword">as</span> sns
+
+<span class="syntax-comment"># Import dataset ke dalam dataframe bernama 'data'</span>
+data = pd.<span class="syntax-function">read_csv</span>(<span class="syntax-string">'adopsi_ai_perusahaan_global.csv'</span>)
+
+<span class="syntax-comment"># Contoh Perhitungan Model Adopsi AI</span>
+<span class="syntax-comment"># Level Adopsi AI = 0.4582 + (5.17e-16 × 0.85) + (2.67e-8 × 0.57)</span>
+<span class="syntax-comment"># Level Adopsi AI ≈ 0.4582 (45.82%)</span>
+
+<span class="syntax-keyword">from</span> sklearn.linear_model <span class="syntax-keyword">import</span> LinearRegression
+model = <span class="syntax-function">LinearRegression</span>()
+
+<span class="syntax-comment"># Melakukan fitting dan analisis lebih lanjut pada dataset</span>
+<span class="syntax-function">print</span>(data.<span class="syntax-function">head</span>())`
+            },
+            'sql-shipment': {
+                title: 'clean_data_dirty.sql (PostgreSQL)',
+                code: `<span class="syntax-comment">-- 1. Standardizing and cleaning text/NULL values</span>
+<span class="syntax-keyword">SELECT</span>
+    shipment_id,
+    <span class="syntax-function">INITCAP</span>(<span class="syntax-function">TRIM</span>(origin_warehouse)) origin_warehouse,
+    <span class="syntax-function">COALESCE</span>(<span class="syntax-function">INITCAP</span>(<span class="syntax-function">TRIM</span>(destination_city)), <span class="syntax-string">'unknown'</span>) destination_city,
+    <span class="syntax-function">UPPER</span>(<span class="syntax-function">TRIM</span>(destination_state)) destination_state,
+    <span class="syntax-function">INITCAP</span>(<span class="syntax-function">TRIM</span>(carrier)) carrier,
+    <span class="syntax-function">INITCAP</span>(<span class="syntax-function">TRIM</span>(shipment_status)) shipment_status,
+    <span class="syntax-function">COALESCE</span>(delivery_date, <span class="syntax-string">'Not Yet Delivered'</span>) destination_date
+<span class="syntax-keyword">FROM</span> dirty_shipments;
+
+<span class="syntax-comment">-- 2. Removing Duplicates using CTE and ROW_NUMBER</span>
+<span class="syntax-keyword">WITH</span> Ranked <span class="syntax-keyword">AS</span> (
+    <span class="syntax-keyword">SELECT</span> *,
+        <span class="syntax-function">ROW_NUMBER</span>() <span class="syntax-keyword">OVER</span> (
+            <span class="syntax-keyword">PARTITION BY</span> origin_warehouse, destination_city, carrier, ship_date, 
+                         <span class="syntax-keyword">CAST</span>(weight_kg <span class="syntax-keyword">AS VARCHAR</span>), <span class="syntax-keyword">CAST</span>(freight_cost <span class="syntax-keyword">AS VARCHAR</span>)
+            <span class="syntax-keyword">ORDER BY</span> shipment_id
+        ) <span class="syntax-keyword">AS</span> row_num
+    <span class="syntax-keyword">FROM</span> dirty_shipments
+)
+<span class="syntax-keyword">SELECT</span> * <span class="syntax-keyword">FROM</span> Ranked <span class="syntax-keyword">WHERE</span> row_num = <span class="syntax-number">1</span>;
+
+<span class="syntax-comment">-- 3. Handling Outlier via IQR for freight_cost</span>
+<span class="syntax-keyword">WITH</span> stats <span class="syntax-keyword">AS</span> (
+    <span class="syntax-keyword">SELECT</span>
+        <span class="syntax-function">PERCENTILE_CONT</span>(<span class="syntax-number">0.25</span>) <span class="syntax-keyword">WITHIN GROUP</span> (<span class="syntax-keyword">ORDER BY</span> freight_cost) <span class="syntax-keyword">AS</span> q1,
+        <span class="syntax-function">PERCENTILE_CONT</span>(<span class="syntax-number">0.75</span>) <span class="syntax-keyword">WITHIN GROUP</span> (<span class="syntax-keyword">ORDER BY</span> freight_cost) <span class="syntax-keyword">AS</span> q3
+    <span class="syntax-keyword">FROM</span> dirty_shipments
+    <span class="syntax-keyword">WHERE</span> freight_cost > <span class="syntax-number">0</span>
+)
+<span class="syntax-keyword">SELECT</span> * <span class="syntax-keyword">FROM</span> dirty_shipments;`
+            }
+        };
+
+        const modal = document.getElementById('code-modal');
+        const modalContent = document.getElementById('modal-content');
+        const modalTitle = document.getElementById('modal-title');
+        const modalCodeContent = document.getElementById('modal-code-content');
+
+        function openModal(projectId) {
+            const data = codeSnippets[projectId];
+            if (data) {
+                modalTitle.textContent = data.title;
+                modalCodeContent.innerHTML = data.code;
+                
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                
+                setTimeout(() => {
+                    modal.classList.remove('opacity-0');
+                    modalContent.classList.remove('scale-95');
+                }, 10);
+
+                document.body.style.overflow = 'hidden'; 
+            }
+        }
+
+        function closeModal() {
+            modal.classList.add('opacity-0');
+            modalContent.classList.add('scale-95');
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                document.body.style.overflow = 'auto'; 
+            }, 300);
+        }
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        function copyModalCode() {
+            const codeText = modalCodeContent.innerText; 
+            const textarea = document.createElement('textarea');
+            textarea.value = codeText;
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                document.execCommand('copy');
+                alertBox('Code snippet copied to clipboard!');
+            } catch (err) {
+                console.error('Failed to copy text: ', err);
+            }
+            document.body.removeChild(textarea);
+        }
+
+        function alertBox(message) {
+            const banner = document.createElement('div');
+            banner.className = 'fixed bottom-5 right-5 z-[60] bg-white border border-slate-200 px-5 py-3 rounded-xl text-slate-700 text-sm font-medium shadow-xl flex items-center gap-3 transition-all duration-300 transform translate-y-0 opacity-100';
+            banner.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-500"></i><span>${message}</span>`;
+            document.body.appendChild(banner);
+            
+            setTimeout(() => {
+                banner.style.transform = 'translateY(-10px)';
+            }, 10);
+
+            setTimeout(() => {
+                banner.style.opacity = '0';
+                banner.style.transform = 'translateY(10px)';
+                setTimeout(() => banner.remove(), 300);
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
